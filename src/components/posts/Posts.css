@@ -1,0 +1,41 @@
+/* Styling for the heading */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+  }
+  
+  /* Container for all posts */
+  .posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Styling for each post */
+  .post {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    width: calc(25% - 20px); /* 4 posts per row with a gap */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .post h3 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: #555;
+  }
+  
+  .post p {
+    margin: 8px 0;
+    color: #777;
+  }
+  
+  .post:hover {
+    transform: scale(1.05);
+  }  
