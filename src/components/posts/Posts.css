@@ -20,7 +20,7 @@ h2 {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
-  width: calc(25% - 20px); /* 4 posts per row with a gap */
+  width: auto;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
 }
@@ -72,4 +72,72 @@ h2 {
   outline: none; /* Remove default outline */
   border-color: #0056b3; /* Darker border on focus */
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow */
+}
+
+/* Container for the post details */
+.post-details {
+  max-width: 800px; /* Limit width for better readability */
+  margin: 20px auto; /* Center the container */
+  padding: 20px;
+  background-color: #f9f9f9; /* Light background */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Title styling */
+.post-title {
+  font-size: 2em; /* Large font size for the title */
+  margin-bottom: 10px; /* Space below the title */
+  text-align: left; /* Left-justified */
+}
+
+/* User name and likes container */
+.post-info {
+  display: flex; /* Flexbox for alignment */
+  justify-content: space-between; /* Space between elements */
+  margin-bottom: 10px; /* Space below */
+}
+
+/* User name styling */
+.post-user {
+  font-size: 1.2em; /* Slightly smaller than title */
+  text-align: left; /* Left-justified */
+}
+
+/* Likes styling */
+.post-likes {
+  font-size: 1.2em; /* Match user name size */
+  text-align: right; /* Right-justified */
+}
+
+/* Topic and date styling */
+.post-topic,
+.post-date {
+  text-align: left; /* Left-justified */
+  margin-bottom: 5px; /* Space below each */
+}
+
+/* Post body styling */
+.post-body {
+  text-align: center; /* Centered text */
+  font-size: 1.1em; /* Slightly larger for readability */
+  margin: 20px 0; /* Space above and below */
+}
+
+/* Like button styling */
+.like-button {
+  display: block; /* Centering the button */
+  margin: 0 auto; /* Auto margin to center */
+  padding: 10px 20px; /* Padding for the button */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: var(--primary); /* Primary color */
+  color: var(--white); /* White text */
+  cursor: pointer; /* Pointer on hover */
+  font-size: 1em; /* Font size */
+}
+
+.like-button:hover {
+  background-color: #e5a000; /* Darker shade on hover */
 }

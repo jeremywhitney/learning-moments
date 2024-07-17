@@ -5,6 +5,7 @@ import { getAllLikes } from "../../services/likeService";
 import { Post } from "./Post";
 import { PostFilterBar } from "./PostFilterBar";
 import "./Posts.css";
+import { Link } from "react-router-dom";
 
 export const AllPosts = () => {
   const [allPosts, setAllPosts] = useState([]);
@@ -59,12 +60,14 @@ export const AllPosts = () => {
       />
       <div className="posts-container">
         {filteredPosts.map((post) => (
-          <Post
-            key={post.id}
-            title={post.title}
-            topic={getTopicNameById(post.topicId)}
-            likes={getLikeCountByPostId(post.id)}
-          />
+          <Link to={`/posts/${post.id}`} key={post.id}>
+            <Post
+              key={post.id}
+              title={post.title}
+              topic={getTopicNameById(post.topicId)}
+              likes={getLikeCountByPostId(post.id)}
+            />
+          </Link>
         ))}
       </div>
     </>

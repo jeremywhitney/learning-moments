@@ -228,13 +228,3 @@ button {
   background-color: #71a500;
 }
 
-/* This CSS can be deleted. It is only used for the first chapter */
-.welcome {
-  text-align: center;
-  margin: 5rem 14rem;
-  font-size: 4rem;
-  color: aliceblue;
-  font-weight: bold;
-  text-shadow: 2px 3px 4px lightslategray;
-}
-

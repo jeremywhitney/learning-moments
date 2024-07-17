@@ -2,15 +2,16 @@ import { Outlet, Route, Routes } from "react-router-dom";
 import { AllPosts } from "../components/posts/AllPosts";
 import { NavBar } from "../components/nav/NavBar";
 import { useEffect, useState } from "react";
+import { PostDetails } from "../components/posts/PostDetails";
 
 export const ApplicationViews = () => {
-    const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState({});
 
-    useEffect(() => {
-        const localLearningUser = localStorage.getItem("learning_user")
-        const learningUserObject = JSON.parse(localLearningUser)
-        setCurrentUser(learningUserObject)
-    }, [])
+  useEffect(() => {
+    const localLearningUser = localStorage.getItem("learning_user");
+    const learningUserObject = JSON.parse(localLearningUser);
+    setCurrentUser(learningUserObject);
+  }, []);
 
   return (
     <Routes>
@@ -23,7 +24,9 @@ export const ApplicationViews = () => {
           </>
         }
       >
-        <Route index element={<AllPosts currentUser={currentUser}/>} />
+        <Route index element={<AllPosts currentUser={currentUser} />} />
+        <Route path="posts" element={<AllPosts currentUser={currentUser} />} />
+        <Route path="posts/:postId" element={<PostDetails />} />
       </Route>
     </Routes>
   );
