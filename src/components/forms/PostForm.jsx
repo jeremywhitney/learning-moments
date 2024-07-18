@@ -32,7 +32,7 @@ export const PostForm = ({ currentUser }) => {
         date: new Date().toISOString().split("T")[0],
       };
       createPost(newPost).then(() => {
-        navigate("/posts"); // This will change to My Posts, once that view is created
+        navigate("/myposts");
       });
     } else {
       window.alert("Please fill out all fields before submitting");

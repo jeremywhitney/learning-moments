@@ -11,11 +11,17 @@ export const getPostById = async (postId) => {
 };
 
 export const createPost = async (post) => {
-  const res = await fetch(`http://localhost:8088/posts`, {
+  const res = await fetch(`http://localhost:8088/posts/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(post),
+  });
+};
+
+export const deletePost = async (postId) => {
+  return fetch(`http://localhost:8088/posts/${postId}`, {
+    method: "DELETE",
   });
 };

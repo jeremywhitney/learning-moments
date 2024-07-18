@@ -1,3 +1,5 @@
+/* STYLING FOR ALL POSTS */
+
 /* Styling for the heading */
 h2 {
   text-align: center;
@@ -74,6 +76,8 @@ h2 {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Subtle shadow */
 }
 
+/* STYLING FOR POST DETAILS */
+
 /* Container for the post details */
 .post-details {
   max-width: 800px; /* Limit width for better readability */
@@ -141,3 +145,55 @@ h2 {
 .like-button:hover {
   background-color: #e5a000; /* Darker shade on hover */
 }
+
+/* STYLING FOR MY POSTS */
+
+/* Container for MyPosts view */
+.my-posts-container {
+  max-width: 800px;
+  margin: 0 auto; /* Center the container */
+  padding: 20px;
+}
+
+/* Styling for each post */
+.post-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-item:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.my-post-post-title {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+}
+
+.delete-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-button:hover {
+  background-color: #c82333;
+}
+
+
