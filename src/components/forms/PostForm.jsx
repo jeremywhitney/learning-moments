@@ -1,14 +1,14 @@
-import { useNavigate } from "react-router-dom";
-import { createPost } from "../../services/postService";
 import { useEffect, useState } from "react";
-import "./Form.css";
+import { useNavigate } from "react-router-dom";
 import { getAllTopics } from "../../services/topicService";
+import "./Form.css";
 
-export const PostForm = ({ currentUser }) => {
+export const PostForm = ({ initialData, onSubmit }) => {
   const [post, setPost] = useState({
     title: "",
     topicId: "",
     body: "",
+    ...initialData,
   });
   const [topics, setTopics] = useState([]);
 
@@ -24,14 +24,7 @@ export const PostForm = ({ currentUser }) => {
     event.preventDefault();
 
     if (post.title && post.topicId && post.body) {
-      const newPost = {
-        userId: currentUser.id,
-        topicId: parseInt(post.topicId),
-        title: post.title,
-        body: post.body,
-        date: new Date().toISOString().split("T")[0],
-      };
-      createPost(newPost).then(() => {
+      onSubmit(post).then(() => {
         navigate("/myposts");
       });
     } else {
@@ -50,7 +43,9 @@ export const PostForm = ({ currentUser }) => {
   return (
     <div className="form-container">
       <form className="post-form">
-        <h2 className="form-header">NEW POST</h2>
+        <h2 className="form-header">
+          {initialData ? "EDIT POST" : "NEW POST"}
+        </h2>
         <fieldset>
           <div className="form-group">
             <label htmlFor="title">Post Title</label>

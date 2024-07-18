@@ -25,3 +25,13 @@ export const deletePost = async (postId) => {
     method: "DELETE",
   });
 };
+
+export const updatePost = async (postId, updatedPost) => {
+  return fetch(`http://localhost:8088/posts/${postId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(updatedPost),
+  }).then((res) => res.json());
+};
