@@ -9,3 +9,13 @@ export const getPostById = async (postId) => {
   );
   return await res.json();
 };
+
+export const createPost = async (post) => {
+  const res = await fetch(`http://localhost:8088/posts`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(post),
+  });
+};
