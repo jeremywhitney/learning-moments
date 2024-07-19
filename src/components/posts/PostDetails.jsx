@@ -34,7 +34,7 @@ export const PostDetails = ({ currentUser }) => {
       {isAuthor ? (
         <button
           className="edit-button"
-          onClick={() => navigate(`posts/edit/${post.id}`)}
+          onClick={() => navigate(`/posts/edit/${post.id}`)}
         >
           Edit Post
         </button>

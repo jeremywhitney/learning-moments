@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getPostById, updatePost } from "../../services/postService";
 import { PostForm } from "./PostForm";
@@ -14,7 +14,14 @@ export const EditPost = ({ currentUser }) => {
   }, [postId]);
 
   const handleUpdatePost = (updatedPost) => {
-    return updatePost(postId, updatedPost);
+    const editedPost = {
+      userId: currentUser.id,
+      topicId: parseInt(updatedPost.topicId),
+      title: updatedPost.title,
+      body: updatedPost.body,
+      date: new Date().toISOString().split("T")[0],
+    };
+    return updatePost(postId, editedPost);
   };
 
   return initialData ? (

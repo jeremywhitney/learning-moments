@@ -5,8 +5,8 @@ import "./Form.css";
 
 export const PostForm = ({ initialData, onSubmit }) => {
   const [post, setPost] = useState({
-    title: "",
     topicId: "",
+    title: "",
     body: "",
     ...initialData,
   });
@@ -44,7 +44,7 @@ export const PostForm = ({ initialData, onSubmit }) => {
     <div className="form-container">
       <form className="post-form">
         <h2 className="form-header">
-          {initialData ? "EDIT POST" : "NEW POST"}
+          {initialData.id ? "EDIT POST" : "NEW POST"}
         </h2>
         <fieldset>
           <div className="form-group">

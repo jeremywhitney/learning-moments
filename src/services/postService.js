@@ -18,6 +18,7 @@ export const createPost = async (post) => {
     },
     body: JSON.stringify(post),
   });
+  return res.json()
 };
 
 export const deletePost = async (postId) => {
