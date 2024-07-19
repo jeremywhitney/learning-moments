@@ -56,4 +56,21 @@
   .user-profile .edit-button:hover {
     background-color: #0097d7; /* Darker shade on hover */
   }
+
+  /* Save button styling */
+.user-profile .save-button {
+  display: block; /* Centering the button */
+  margin: 0 auto; /* Auto margin to center */
+  padding: 10px 20px; /* Padding for the button */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: var(--primary); /* Primary color */
+  color: var(--white); /* White text */
+  cursor: pointer; /* Pointer on hover */
+  font-size: 1em; /* Font size */
+}
+
+.user-profile .save-button:hover {
+  background-color: #007bb5; /* Darker shade on hover */
+}
   

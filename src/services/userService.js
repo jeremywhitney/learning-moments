@@ -18,3 +18,14 @@ export const getUserById = async (userId) => {
   const res = await fetch(`http://localhost:8088/users/${userId}`);
   return await res.json();
 };
+
+export const editUser = async (userId, user) => {
+  const res = await fetch(`http://localhost:8088/users/${userId}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+  return await res.json();
+};

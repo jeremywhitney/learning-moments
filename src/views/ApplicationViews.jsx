@@ -8,6 +8,7 @@ import { CreateNewPost } from "../components/forms/CreateNewPost";
 import { EditPost } from "../components/forms/EditPost";
 import { Favorites } from "../components/posts/Favorites";
 import { UserProfile } from "../components/users/UserProfile";
+import { EditProfile } from "../components/users/EditProfile";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -51,6 +52,10 @@ export const ApplicationViews = () => {
         <Route
           path="profile/:userId"
           element={<UserProfile currentUser={currentUser} />}
+        />
+        <Route
+          path="profile/edit/:userId"
+          element={<EditProfile currentUser={currentUser} />}
         />
       </Route>
     </Routes>
