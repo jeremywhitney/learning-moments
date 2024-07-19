@@ -3,6 +3,7 @@ import "./NavBar.css";
 
 export const NavBar = () => {
   const navigate = useNavigate();
+  const currentUser = JSON.parse(localStorage.getItem("learning_user"));
 
   return (
     <ul className="navbar">
@@ -17,6 +18,9 @@ export const NavBar = () => {
       </li>
       <li className="navbar-item">
         <Link to="/newpost">New Post</Link>
+      </li>
+      <li className="navbar-item">
+        <Link to={`/profile/${currentUser.id}`}>Profile</Link>
       </li>
       {localStorage.getItem("learning_user") ? (
         <li className="navbar-item navbar-logout">

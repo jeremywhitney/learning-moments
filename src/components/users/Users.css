@@ -1,0 +1,59 @@
+/* STYLING FOR USER PROFILE */
+
+/* Container for the user profile */
+.user-profile {
+    max-width: 600px; /* Limit width for better readability */
+    margin: 20px auto; /* Center the container */
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Center text in the profile */
+  }
+  
+  /* Heading styling */
+  .user-profile header {
+    font-size: 2em; /* Large font size for the header */
+    margin-bottom: 20px; /* Space below the header */
+    color: #333; /* Text color */
+  }
+  
+  /* User name styling */
+  .user-profile .user-name {
+    font-size: 1.5em; /* Slightly smaller than header */
+    margin-bottom: 20px; /* Space below the user name */
+    color: #555; /* Text color */
+  }
+  
+  /* Cohort number styling */
+  .user-profile .user-cohort {
+    font-size: 1.2em; /* Slightly smaller than user name */
+    margin-bottom: 20px; /* Space below the cohort number */
+    color: #777; /* Text color */
+  }
+  
+  /* Posts written styling */
+  .user-profile .posts-written {
+    font-size: 1.2em; /* Match cohort number size */
+    margin-bottom: 20px; /* Space below the posts written */
+    color: #777; /* Text color */
+  }
+  
+  /* Edit button styling */
+  .user-profile .edit-button {
+    display: block; /* Centering the button */
+    margin: 0 auto; /* Auto margin to center */
+    padding: 10px 20px; /* Padding for the button */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    background-color: var(--secondary); /* Primary color */
+    color: var(--white); /* White text */
+    cursor: pointer; /* Pointer on hover */
+    font-size: 1em; /* Font size */
+  }
+  
+  .user-profile .edit-button:hover {
+    background-color: #0097d7; /* Darker shade on hover */
+  }
+  

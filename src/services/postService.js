@@ -36,3 +36,9 @@ export const updatePost = async (postId, updatedPost) => {
     body: JSON.stringify(updatedPost),
   }).then((res) => res.json());
 };
+
+export const getPostsByUserId = async (userId) => {
+  const res = await fetch(`http://localhost:8088/posts?userId=${userId}`);
+  return await res.json();
+};
+
