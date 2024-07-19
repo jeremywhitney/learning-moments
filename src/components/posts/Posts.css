@@ -136,14 +136,14 @@ h2 {
   padding: 10px 20px; /* Padding for the button */
   border: none; /* No border */
   border-radius: 5px; /* Rounded corners */
-  background-color: var(--primary); /* Primary color */
+  background-color: #7fb800; 
   color: var(--white); /* White text */
   cursor: pointer; /* Pointer on hover */
   font-size: 1em; /* Font size */
 }
 
 .like-button:hover {
-  background-color: #e5a000; /* Darker shade on hover */
+  background-color: #71a500; /* Darker shade on hover */
 }
 
 /* Edit button styling */
@@ -211,6 +211,22 @@ h2 {
 
 .delete-button:hover {
   background-color: #c82333;
+}
+
+.unlike-button {
+  display: block; /* Centering the button */
+  margin: 0 auto; /* Auto margin to center */
+  padding: 10px 20px; /* Padding for the button */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  background-color: var(--primary); 
+  color: var(--white); /* White text */
+  cursor: pointer; /* Pointer on hover */
+  font-size: 1em; /* Font size */
+}
+
+.unlike-button:hover {
+  background-color: #e5a000;
 }
 
 
