@@ -163,6 +163,19 @@ h2 {
   background-color: #0097d7; /* Darker shade on hover */
 }
 
+/* Styling for user link */
+.user-link {
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+  font-weight: bold; /* Bold text */
+}
+
+.user-link:hover {
+  text-decoration: underline; /* Underline on hover */
+  color: #0056b3; /* Darker color on hover */
+}
+
+
 /* STYLING FOR MY POSTS */
 
 /* Container for MyPosts view */

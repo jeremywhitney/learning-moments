@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getPostById } from "../../services/postService";
 import { addLike, deleteLike } from "../../services/likeService";
 import { useLikes } from "../utilities/useLikes";
@@ -77,7 +77,10 @@ export const PostDetails = ({ currentUser }) => {
       <h2 className="post-title">{post.title}</h2>
       <div className="post-info">
         <h3 className="post-user">
-          Author: {post.user?.name || "Unknown User"}
+          Author:{" "}
+          <Link to={`/profile/${post.userId}`} className="user-link">
+            {post.user?.name || "Unknown User"}
+          </Link>
         </h3>
         <span className="post-likes">{post.likes?.length || 0} Likes</span>
       </div>

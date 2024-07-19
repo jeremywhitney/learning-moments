@@ -4,7 +4,7 @@ import { getUserById } from "../../services/userService";
 import { getPostsByUserId } from "../../services/postService";
 import "./Users.css";
 
-export const UserProfile = () => {
+export const UserProfile = ({ currentUser }) => {
   const [user, setUser] = useState({});
   const [postsCount, setPostsCount] = useState(0);
   const { userId } = useParams();
@@ -32,7 +32,9 @@ export const UserProfile = () => {
       <div className="posts-written">
         <span>Posts Written: {postsCount}</span>
       </div>
-      <button className="edit-button">Edit Profile</button>
+      {currentUser.id === user.id && (
+        <button className="edit-button">Edit Profile</button>
+      )}
     </section>
   );
 };
