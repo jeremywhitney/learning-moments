@@ -1,3 +1,7 @@
+import { Like } from "./likes";
+import { Topic } from "./topics";
+import { User } from "./users";
+
 export interface Post {
   id: number;
   userId: number;
@@ -5,4 +9,10 @@ export interface Post {
   title: string;
   body: string;
   date: string;
+}
+
+export interface CompletePost extends Post {
+  likes: Like[];
+  user: User;
+  topic: Topic;
 }
