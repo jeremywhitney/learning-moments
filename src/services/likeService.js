@@ -4,7 +4,9 @@ export const getAllLikes = async () => {
 };
 
 export const getLikesByUserId = async (userId) => {
-  const res = await fetch(`http://localhost:8088/likes/?userId=${userId}&_expand=post`);
+  const res = await fetch(
+    `http://localhost:8088/likes/?userId=${userId}&_expand=post`
+  );
   return await res.json();
 };
 
@@ -22,5 +24,5 @@ export const addLike = async (like) => {
     },
     body: JSON.stringify(like),
   });
-  return res.json()
+  return res.json();
 };

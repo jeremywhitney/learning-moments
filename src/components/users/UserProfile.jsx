@@ -33,7 +33,11 @@ export const UserProfile = ({ currentUser }) => {
   const handleCohortChange = (e) => setEditableCohort(e.target.value);
 
   const handleSave = async () => {
-    const updatedUser = { ...user, name: editableName, cohort: parseInt(editableCohort) };
+    const updatedUser = {
+      ...user,
+      name: editableName,
+      cohort: parseInt(editableCohort),
+    };
     await editUser(userId, updatedUser);
     setUser(updatedUser);
     setIsEditMode(false);

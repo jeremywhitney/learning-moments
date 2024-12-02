@@ -18,7 +18,7 @@ export const createPost = async (post) => {
     },
     body: JSON.stringify(post),
   });
-  return res.json()
+  return res.json();
 };
 
 export const deletePost = async (postId) => {
@@ -41,4 +41,3 @@ export const getPostsByUserId = async (userId) => {
   const res = await fetch(`http://localhost:8088/posts?userId=${userId}`);
   return await res.json();
 };
-
