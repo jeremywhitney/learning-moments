@@ -1,17 +1,22 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllTopics } from "../../services/topicService";
+import { Post, PostFormData } from "../../types/posts";
+import { Topic } from "../../types/topics";
 import "./Form.css";
 
-export const PostForm = ({ initialData, onSubmit }) => {
-  const [post, setPost] = useState({
-    topicId: "",
-    title: "",
-    body: "",
-    ...initialData,
-  });
-  const [topics, setTopics] = useState([]);
+interface PostFormProps {
+  initialData: Partial<Post>;
+  onSubmit: (post: PostFormData) => Promise<Post>;
+}
 
+export const PostForm = ({ initialData, onSubmit }: PostFormProps) => {
+  const [post, setPost] = useState<PostFormData>({
+    topicId: initialData.topicId?.toString() || "",
+    title: initialData.title || "",
+    body: initialData.body || "",
+  });
+  const [topics, setTopics] = useState<Topic[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,7 +25,7 @@ export const PostForm = ({ initialData, onSubmit }) => {
     });
   }, []);
 
-  const handleSave = (event) => {
+  const handleSave = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (post.title && post.topicId && post.body) {
@@ -32,7 +37,11 @@ export const PostForm = ({ initialData, onSubmit }) => {
     }
   };
 
-  const handleChange = (event) => {
+  const handleChange = (
+    event: ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
     const { name, value } = event.target;
     setPost((prevPost) => ({
       ...prevPost,
@@ -42,7 +51,7 @@ export const PostForm = ({ initialData, onSubmit }) => {
 
   return (
     <div className="form-container">
-      <form className="post-form">
+      <form className="post-form" onSubmit={handleSave}>
         <h2 className="form-header">
           {initialData.id ? "EDIT POST" : "NEW POST"}
         </h2>
@@ -87,9 +96,7 @@ export const PostForm = ({ initialData, onSubmit }) => {
             />
           </div>
         </fieldset>
-        <button type="submit" onClick={handleSave}>
-          Save Post
-        </button>
+        <button type="submit">Save Post</button>
       </form>
     </div>
   );
