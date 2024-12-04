@@ -1,9 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
+import { UserStorage } from "../../types/users";
 import "./NavBar.css";
 
 export const NavBar = () => {
   const navigate = useNavigate();
-  const currentUser = JSON.parse(localStorage.getItem("learning_user"));
+  const userJSON = localStorage.getItem("learning_user");
+  const currentUser = userJSON ? (JSON.parse(userJSON) as UserStorage) : null;
+
+  if (!currentUser) return null;
 
   return (
     <ul className="navbar">
@@ -22,7 +26,7 @@ export const NavBar = () => {
       <li className="navbar-item">
         <Link to={`/profile/${currentUser.id}`}>Profile</Link>
       </li>
-      {localStorage.getItem("learning_user") ? (
+      {currentUser && (
         <li className="navbar-item navbar-logout">
           <Link
             to="navbar-link"
@@ -34,8 +38,6 @@ export const NavBar = () => {
             Logout
           </Link>
         </li>
-      ) : (
-        ""
       )}
     </ul>
   );

@@ -4,3 +4,5 @@ export interface User {
   email: string;
   cohort: number;
 }
+
+export type UserStorage = Pick<User, "id">;

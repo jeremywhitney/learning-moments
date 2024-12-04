@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getUserByEmail } from "../../services/userService";
-import { User } from "../../types/users";
+import { User, UserStorage } from "../../types/users";
 import "./Login.css";
 
 export const Login = () => {
@@ -15,7 +15,6 @@ export const Login = () => {
     if (foundUsers.length === 1) {
       const user: User = foundUsers[0];
 
-      type UserStorage = Pick<User, "id">;
       localStorage.setItem(
         "learning_user",
         JSON.stringify({

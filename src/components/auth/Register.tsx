@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUser, getUserByEmail } from "../../services/userService";
-import { User } from "../../types/users";
+import { User, UserStorage } from "../../types/users";
 import "./Login.css";
 
 type RegistrationUser = Omit<User, "id" | "cohort"> & { cohort: string };
@@ -26,7 +26,7 @@ export const Register = () => {
           "learning_user",
           JSON.stringify({
             id: createdUser.id,
-          } as Pick<User, "id">)
+          } as UserStorage)
         );
 
         navigate("/");
