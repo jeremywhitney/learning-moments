@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
 import { createUser, getUserByEmail } from "../../services/userService";
+import { User } from "../../types/users";
+import "./Login.css";
 
-export const Register = (props) => {
-  const [user, setUser] = useState({
+type RegistrationUser = Omit<User, "id" | "cohort"> & { cohort: string };
+
+export const Register = () => {
+  const [user, setUser] = useState<RegistrationUser>({
     name: "",
     email: "",
-    cohort: 0,
+    cohort: "",
   });
   let navigate = useNavigate();
 
@@ -23,8 +26,7 @@ export const Register = (props) => {
           "learning_user",
           JSON.stringify({
             id: createdUser.id,
-            staff: createdUser.isStaff,
-          })
+          } as Pick<User, "id">)
         );
 
         navigate("/");
@@ -32,7 +34,7 @@ export const Register = (props) => {
     });
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     getUserByEmail(user.email).then((response) => {
       if (response.length > 0) {
@@ -45,9 +47,9 @@ export const Register = (props) => {
     });
   };
 
-  const updateUser = (evt) => {
+  const updateUser = (evt: ChangeEvent<HTMLInputElement>) => {
     const copy = { ...user };
-    copy[evt.target.id] = evt.target.value;
+    copy[evt.target.id as keyof typeof user] = evt.target.value;
     setUser(copy);
   };
 
