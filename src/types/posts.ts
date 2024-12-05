@@ -18,3 +18,5 @@ export interface CompletePost extends Post {
 }
 
 export type PostFormData = Pick<Post, 'title' | 'body'> & { topicId: string}
+
+export type PostData = Post
