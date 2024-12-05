@@ -1,14 +1,19 @@
-import { deleteLike } from "../../services/likeService";
-import { Link } from "react-router-dom";
-import { useLikes } from "../utilities/useLikes";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { deleteLike } from "../../services/likeService";
+import { useLikes } from "../utilities/useLikes";
+import { User } from "../../types/users";
 import "./Posts.css";
 
-export const Favorites = ({ currentUser }) => {
-  const [refresh, setRefresh] = useState(false);
+interface FavoritesProps {
+  currentUser: Pick<User, "id">;
+}
+
+export const Favorites = ({ currentUser }: FavoritesProps) => {
+  const [refresh, setRefresh] = useState<boolean>(false);
   const myLikes = useLikes(currentUser.id, refresh);
 
-  const handleDelete = (likeId) => {
+  const handleDelete = (likeId: number) => {
     deleteLike(likeId).then(() => {
       setRefresh((prev) => !prev);
     });

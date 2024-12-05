@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
-import { deletePost, getAllPosts } from "../../services/postService";
 import { Link } from "react-router-dom";
+import { deletePost, getAllPosts } from "../../services/postService";
+import { User } from "../../types/users";
+import { Post } from "../../types/posts";
 
-export const MyPosts = ({ currentUser }) => {
-  const [myPosts, setMyPosts] = useState([]);
+interface MyPostsProps {
+  currentUser: Pick<User, "id">;
+}
+
+export const MyPosts = ({ currentUser }: MyPostsProps) => {
+  const [myPosts, setMyPosts] = useState<Post[]>([]);
 
   useEffect(() => {
     getAllPosts().then((allPosts) => {
@@ -12,7 +18,7 @@ export const MyPosts = ({ currentUser }) => {
     });
   }, [currentUser.id]);
 
-  const handleDelete = (postId) => {
+  const handleDelete = (postId: number) => {
     deletePost(postId).then(() => {
       setMyPosts(myPosts.filter((p) => p.id !== postId));
     });
