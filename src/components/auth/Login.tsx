@@ -1,32 +1,32 @@
-import React, { useState } from "react"
-import { Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
-// import "./Login.css"
-import { getUserByEmail } from "../../services/userService"
+import { FormEvent, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { getUserByEmail } from "../../services/userService";
+import { User, UserStorage } from "../../types/users";
+import "./Login.css";
 
 export const Login = () => {
-  const [email, set] = useState("")
-  const navigate = useNavigate()
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault()
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    return getUserByEmail(email).then((foundUsers) => {
-      if (foundUsers.length === 1) {
-        const user = foundUsers[0]
-        localStorage.setItem(
-          "learning_user",
-          JSON.stringify({
-            id: user.id,
-          })
-        )
+    const foundUsers = await getUserByEmail(email);
+    if (foundUsers.length === 1) {
+      const user: User = foundUsers[0];
 
-        navigate("/")
-      } else {
-        window.alert("Invalid login")
-      }
-    })
-  }
+      localStorage.setItem(
+        "learning_user",
+        JSON.stringify({
+          id: user.id,
+        } as UserStorage)
+      );
+
+      navigate("/");
+    } else {
+      window.alert("Invalid login");
+    }
+  };
 
   return (
     <main className="auth-container">
@@ -40,7 +40,7 @@ export const Login = () => {
                 type="email"
                 value={email}
                 className="auth-form-input"
-                onChange={(evt) => set(evt.target.value)}
+                onChange={(evt) => setEmail(evt.target.value)}
                 placeholder="Email address"
                 required
                 autoFocus
@@ -58,6 +58,5 @@ export const Login = () => {
         <Link to="/register">Not a member yet?</Link>
       </section>
     </main>
-  )
-}
-
+  );
+};

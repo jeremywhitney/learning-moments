@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { Post } from "./Post";
+import { PostFilterBar } from "./PostFilterBar";
 import { getAllPosts } from "../../services/postService";
 import { getAllTopics } from "../../services/topicService";
 import { getAllLikes } from "../../services/likeService";
-import { Post } from "./Post";
-import { PostFilterBar } from "./PostFilterBar";
+import { PostData } from "../../types/posts";
+import { Topic } from "../../types/topics";
+import { Like } from "../../types/likes";
 import "./Posts.css";
-import { Link } from "react-router-dom";
 
 export const AllPosts = () => {
-  const [allPosts, setAllPosts] = useState([]);
-  const [allTopics, setAllTopics] = useState([]);
-  const [allLikes, setAllLikes] = useState([]);
-  const [filteredPosts, setFilteredPosts] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedTopic, setSelectedTopic] = useState("");
+  const [allPosts, setAllPosts] = useState<PostData[]>([]);
+  const [allTopics, setAllTopics] = useState<Topic[]>([]);
+  const [allLikes, setAllLikes] = useState<Like[]>([]);
+  const [filteredPosts, setFilteredPosts] = useState<PostData[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+  const [selectedTopic, setSelectedTopic] = useState<string>("");
 
   useEffect(() => {
     // Fetch all data and set state
@@ -28,12 +31,12 @@ export const AllPosts = () => {
       });
   }, []);
 
-  const getTopicNameById = (id) => {
+  const getTopicNameById = (id: number) => {
     const topic = allTopics.find((t) => t.id === id);
     return topic ? topic.name : "Unknown Topic";
   };
 
-  const getLikeCountByPostId = (postId) => {
+  const getLikeCountByPostId = (postId: number) => {
     return allLikes.filter((l) => l.postId === postId).length;
   };
 

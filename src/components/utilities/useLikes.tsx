@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { getLikesByUserId } from "../../services/likeService";
+import { LikeWithPostObject } from "../../types/likes";
 
-export const useLikes = (userId, refresh) => {
-  const [likes, setLikes] = useState([]);
+export const useLikes = (
+  userId: number,
+  refresh: boolean
+): LikeWithPostObject[] => {
+  const [likes, setLikes] = useState<LikeWithPostObject[]>([]);
 
   useEffect(() => {
     const fetchLikes = async () => {

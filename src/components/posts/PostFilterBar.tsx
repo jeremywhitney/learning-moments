@@ -1,8 +1,16 @@
+import { Topic } from "../../types/topics";
+
+interface PostFilterBarProps {
+  setSearchTerm: (value: string) => void;
+  allTopics: Topic[];
+  setSelectedTopic: (value: string) => void;
+}
+
 export const PostFilterBar = ({
   setSearchTerm,
   allTopics,
   setSelectedTopic,
-}) => {
+}: PostFilterBarProps) => {
   return (
     <div className="filter-bar">
       <select

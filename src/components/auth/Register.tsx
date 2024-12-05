@@ -1,21 +1,24 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
-import "./Login.css"
-import { createUser, getUserByEmail } from "../../services/userService"
+import { ChangeEvent, FormEvent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { createUser, getUserByEmail } from "../../services/userService";
+import { User, UserStorage } from "../../types/users";
+import "./Login.css";
 
-export const Register = (props) => {
-  const [user, setUser] = useState({
+type RegistrationUser = Omit<User, "id" | "cohort"> & { cohort: string };
+
+export const Register = () => {
+  const [user, setUser] = useState<RegistrationUser>({
     name: "",
     email: "",
-    cohort: 0,
-  })
-  let navigate = useNavigate()
+    cohort: "",
+  });
+  let navigate = useNavigate();
 
   const registerNewUser = () => {
     const newUser = {
       ...user,
       cohort: parseInt(user.cohort),
-    }
+    };
 
     createUser(newUser).then((createdUser) => {
       if (createdUser.hasOwnProperty("id")) {
@@ -23,33 +26,32 @@ export const Register = (props) => {
           "learning_user",
           JSON.stringify({
             id: createdUser.id,
-            staff: createdUser.isStaff,
-          })
-        )
+          } as UserStorage)
+        );
 
-        navigate("/")
+        navigate("/");
       }
-    })
-  }
+    });
+  };
 
-  const handleRegister = (e) => {
-    e.preventDefault()
+  const handleRegister = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     getUserByEmail(user.email).then((response) => {
       if (response.length > 0) {
         // Duplicate email. No good.
-        window.alert("Account with that email address already exists")
+        window.alert("Account with that email address already exists");
       } else {
         // Good email, create user.
-        registerNewUser()
+        registerNewUser();
       }
-    })
-  }
+    });
+  };
 
-  const updateUser = (evt) => {
-    const copy = { ...user }
-    copy[evt.target.id] = evt.target.value
-    setUser(copy)
-  }
+  const updateUser = (evt: ChangeEvent<HTMLInputElement>) => {
+    const copy = { ...user };
+    copy[evt.target.id as keyof typeof user] = evt.target.value;
+    setUser(copy);
+  };
 
   return (
     <main className="auth-container">
@@ -100,5 +102,5 @@ export const Register = (props) => {
         </fieldset>
       </form>
     </main>
-  )
-}
+  );
+};
