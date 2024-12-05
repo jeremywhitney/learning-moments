@@ -6,7 +6,6 @@ export const NavBar = () => {
   const navigate = useNavigate();
   const userJSON = localStorage.getItem("learning_user");
   const currentUser = userJSON ? (JSON.parse(userJSON) as UserStorage) : null;
-
   if (!currentUser) return null;
 
   return (
