@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import { Login } from "./components/auth/Login.jsx";
-import { Register } from "./components/auth/Register.jsx";
-import { ApplicationViews } from "./views/ApplicationViews";
-import { Authorized } from "./views/Authorized.jsx";
+import { Login } from "./components/auth/Login.js";
+import { Register } from "./components/auth/Register.js";
+import { ApplicationViews } from "./views/ApplicationViews.js";
+import { Authorized } from "./views/Authorized.js";
 
 export const App = () => {
   return (

@@ -1,23 +1,28 @@
-import { Outlet, Route, Routes } from "react-router-dom";
-import { AllPosts } from "../components/posts/AllPosts";
-import { NavBar } from "../components/nav/NavBar";
 import { useEffect, useState } from "react";
+import { Outlet, Route, Routes } from "react-router-dom";
+import { NavBar } from "../components/nav/NavBar";
+import { AllPosts } from "../components/posts/AllPosts";
 import { PostDetails } from "../components/posts/PostDetails";
 import { MyPosts } from "../components/posts/MyPosts";
+import { Favorites } from "../components/posts/Favorites";
 import { CreateNewPost } from "../components/forms/CreateNewPost";
 import { EditPost } from "../components/forms/EditPost";
-import { Favorites } from "../components/posts/Favorites";
 import { UserProfile } from "../components/users/UserProfile";
 import { EditProfile } from "../components/users/EditProfile";
+import { UserStorage } from "../types/users";
 
 export const ApplicationViews = () => {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState<UserStorage | null>(null);
 
   useEffect(() => {
     const localLearningUser = localStorage.getItem("learning_user");
-    const learningUserObject = JSON.parse(localLearningUser);
-    setCurrentUser(learningUserObject);
+    if (localLearningUser) {
+      const learningUserObject = JSON.parse(localLearningUser);
+      setCurrentUser(learningUserObject);
+    }
   }, []);
+
+  if (!currentUser) return null;
 
   return (
     <Routes>
@@ -30,8 +35,8 @@ export const ApplicationViews = () => {
           </>
         }
       >
-        <Route index element={<AllPosts currentUser={currentUser} />} />
-        <Route path="posts" element={<AllPosts currentUser={currentUser} />} />
+        <Route index element={<AllPosts />} />
+        <Route path="posts" element={<AllPosts />} />
         <Route
           path="posts/:postId"
           element={<PostDetails currentUser={currentUser} />}
@@ -53,10 +58,8 @@ export const ApplicationViews = () => {
           path="profile/:userId"
           element={<UserProfile currentUser={currentUser} />}
         />
-        <Route
-          path="profile/edit/:userId"
-          element={<EditProfile currentUser={currentUser} />}
-        />
+        {/* Add currentUser prop back in if you ever end up building out this component */}
+        <Route path="profile/edit/:userId" element={<EditProfile />} /> 
       </Route>
     </Routes>
   );
